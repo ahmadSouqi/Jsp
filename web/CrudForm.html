@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Film</title>
+</head>
+<body>
+      <div id="add">
+          <form action="/addFilmServlet.do" method="post">
+              ID:<input type="text" name="id"/><br>
+              Title:<input type="text" name="title"/><br>
+              Description:<input type="text" name="description"/><br>
+              Release Year:<input type="text" name="release_year"/><br>
+              <input type="submit" value="Add Film"/><br>
+          </form>
+      </div>
+      <br><br>
+
+      <div id="edit">
+          <form action="/editFilmServlet.do" method="post">
+              ID:<input type="text" name="id"/><br>
+              Title:<input type="text" name="title"/><br>
+              Description:<input type="text" name="description"/><br>
+              Release Year:<input type="text" name="release_year"/><br>
+              <input type="submit" value="Edit Film"/><br>
+          </form>
+      </div>
+      <br><br>
+
+      <div id="delete">
+          <form action="/deleteFilm_Servlet.do" method="get">
+          ID:<input type="text" name="film_id"/><br>
+              <input type="submit" value="Delete Film"/><br>
+          </form>
+      </div>
+      <br>
+</body>
+</html>
