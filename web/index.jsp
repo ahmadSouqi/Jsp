@@ -11,8 +11,10 @@
     <title>$Title$</title>
   </head>
   <body>
-           <a href="/getFilms_Servlet.do">View Films<a/>
-           <br><br>
-           <a href="CrudForm.html">Add Film<a/>
+           <form action="/log" method="post">
+               User Name: <input type="text" name="txtUserName"/><br>
+               PassWord:  <input type="text" name="txtPassword"/><br>
+               <input  type="submit" value="LogIn" align="left"/><br>
+           </form>
   </body>
 </html>
