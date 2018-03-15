@@ -1,6 +1,6 @@
 package com.servlet;
 
-import com.model.FilmDAO;
+import com.model.StudentDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,24 +12,24 @@ import java.io.IOException;
 /**
  * Created by asouqi on 3/14/18.
  */
-@WebServlet(name = "deleteFilm_Servlet", urlPatterns = "/deleteFilm_Servlet.do")
-public class deleteFilm_Servlet extends HttpServlet {
+@WebServlet(name = "deleteStudent_Servlet", urlPatterns = "/deleteStudent_Servlet.do")
+public class deleteStudent_Servlet extends HttpServlet {
 
-    private FilmDAO dao;
+    private StudentDAO dao;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        dao=new FilmDAO(getServletContext().getInitParameter("DB_Url"),
+        dao=new StudentDAO(getServletContext().getInitParameter("DB_Url"),
                 getServletContext().getInitParameter("DB_UserName"),
                 getServletContext().getInitParameter("DB_Password"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        long film_id=Long.parseLong(request.getParameter("film_id"));
+        long film_id=Long.parseLong(request.getParameter("student_id"));
 
-        dao.deleteFilm(film_id);
-        request.getRequestDispatcher("/getFilms_Servlet.do").forward(request,response);
+        dao.deleteStudent(film_id);
+        request.getRequestDispatcher("/getStudents_Servlet.do").forward(request,response);
     }
 }

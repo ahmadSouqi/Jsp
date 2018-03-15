@@ -1,6 +1,7 @@
 package com.servlet;
 
 import com.model.User;
+import com.model.UserDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * Created by asouqi on 3/14/18.
  */
 @WebServlet(name = "logIn_Servlet", urlPatterns = "/log.do")
 public class logIn_Servlet extends HttpServlet {
+
+    private UserDAO dao;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        dao=new UserDAO(getServletContext().getInitParameter("DB_Url"),
+                getServletContext().getInitParameter("DB_UserName"),
+                getServletContext().getInitParameter("DB_Password"));
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          String name=request.getParameter("txtUserName");
@@ -36,7 +48,9 @@ public class logIn_Servlet extends HttpServlet {
     }
 
     private boolean isValid(User user) {
-        if (user!=null && user.getUserName().equals("Ali") && user.getPassword().equals("123")){
+        Set<User> users=dao.getUsers();
+
+        if (user!=null && users.contains(user)){
             return true;
         }
         else

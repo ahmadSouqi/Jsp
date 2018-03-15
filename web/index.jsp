@@ -11,7 +11,7 @@
     <title>$Title$</title>
   </head>
   <body>
-           <form action="/log" method="post">
+           <form action="/log.do" method="post">
                User Name: <input type="text" name="txtUserName"/><br>
                PassWord:  <input type="text" name="txtPassword"/><br>
                <input  type="submit" value="LogIn" align="left"/><br>

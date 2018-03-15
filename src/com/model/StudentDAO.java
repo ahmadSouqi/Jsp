@@ -7,31 +7,31 @@ import java.util.List;
 /**
  * Created by asouqi on 3/13/18.
  */
-public class FilmDAO {
+public class StudentDAO {
     private String url;
     private String userName;
     private String passWord;
 
-    public FilmDAO(String url, String userName, String passWord) {
+    public StudentDAO(String url, String userName, String passWord) {
         this.url = url;
         this.userName = userName;
         this.passWord = passWord;
     }
 
-    public List<Film> getFilms(){
+    public List<Student> getStudents(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection= DriverManager.getConnection(url,userName,passWord);
             Statement statement=connection.createStatement();
-            ResultSet set=statement.executeQuery(
-                    "select film_id,title,description,release_year from sakila.film;");
-            List<Film> films=new ArrayList<>();
+            ResultSet set=statement.executeQuery("select * from Servlet.student;");
+            List<Student> students =new ArrayList<>();
 
             while (set.next()){
-                films.add( new Film(set.getLong(1),set.getString(2),
-                                    set.getString(3),set.getInt(4)));
+                students.add(new Student(set.getInt(1),set.getString(2),
+                        set.getString(3),set.getDouble(4),
+                        set.getString(5)));
             }
-            return films;
+            return students;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,17 +41,17 @@ public class FilmDAO {
         return null;
     }
 
-    public void addFilm(Film film){
+    public void addStudent(Student student){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection= DriverManager.getConnection(url,userName,passWord);
-            PreparedStatement ps=connection.prepareStatement("INSERT INTO sakila.film" +
-                                   "(film_id,title,description,release_year,language_id) VALUE(?,?,?,?,1)");
+            PreparedStatement ps=connection.prepareStatement("INSERT INTO Servlet.student VALUE(?,?,?,?,?)");
 
-            ps.setLong(1,film.getId());
-            ps.setString(2,film.getTitle());
-            ps.setString(3,film.getDescription());
-            ps.setInt(4,film.getRelease_year());
+            ps.setInt(1, student.getId());
+            ps.setString(2, student.getFirst_name());
+            ps.setString(3, student.getLast_name());
+            ps.setDouble(4, student.getAvrg());
+            ps.setString(5, student.getUnvirsty());
             ps.execute();
 
         } catch (SQLException e) {
@@ -61,20 +61,21 @@ public class FilmDAO {
         }
     }
 
-    public void editFilm(Film film){
+    public void editStudent(Student student){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection= DriverManager.getConnection(url,userName,passWord);
-            PreparedStatement ps=connection.prepareStatement("update sakila.film set  " +
-                                      "film_id=?, title=?, description=?, release_year=?   " +
-                                       "where film_id=?;");
-
-            ps.setLong(1,film.getId());
-            ps.setString(2,film.getTitle());
-            ps.setString(3,film.getDescription());
-            ps.setInt(4,film.getRelease_year());
-            ps.setLong(5,film.getId());
-            ps.execute();
+            PreparedStatement ps=connection.prepareStatement("update Servlet.student set  " +
+                                      "student_id=?, first_name=?, last_name=?, avrg=?, Unv=?" +
+                                       "where student_id=?;");
+            System.out.println(student);
+            ps.setInt(1, student.getId());
+            ps.setString(2, student.getFirst_name());
+            ps.setString(3, student.getLast_name());
+            ps.setDouble(4, student.getAvrg());
+            ps.setString(5, student.getUnvirsty());
+            ps.setInt(6, student.getId());
+            System.out.println(ps.execute());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,11 +84,11 @@ public class FilmDAO {
         }
     }
 
-    public void deleteFilm(long id){
+    public void deleteStudent(long id){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection= DriverManager.getConnection(url,userName,passWord);
-            PreparedStatement ps=connection.prepareStatement("DELETE FROM sakila.film WHERE film_id=?");
+            PreparedStatement ps=connection.prepareStatement("DELETE FROM Servlet.student WHERE student_id=?");
 
             ps.setLong(1,id);
             ps.execute();

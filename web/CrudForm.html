@@ -6,38 +6,75 @@
 </head>
 <body>
       <div id="get_films">
-          <a href="/getFilms_Servlet.do">Get All Films</a>
+          <a href="/getStudents_Servlet.do">Get All Students</a>
       </div>
       <br><br>
 
       <div id="add">
-          <form action="/addFilmServlet.do" method="post">
-              ID:<input type="text" name="id"/><br>
-              Title:<input type="text" name="title"/><br>
-              Description:<input type="text" name="description"/><br>
-              Release Year:<input type="text" name="release_year"/><br>
-              <input type="submit" value="Add Film"/><br>
+          <form action="/addStudentServlet.do" method="post">
+              <table>
+                  <tr>
+                     <td> Student ID:<input type="text" name="id"/></td>
+                  </tr>
+                  <tr>
+                      <td> First Name:<input name="firstName" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td> Last Name:<input name="lastName" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td> Average:<input name="average" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td> University:<input name="university" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td align="right"><input type="submit" value="Add Student"/></td>
+                  </tr>
+              </table>
           </form>
       </div>
       <br><br>
 
       <div id="edit">
-          <form action="/editFilmServlet.do" method="post">
-              ID:<input type="text" name="id"/><br>
-              Title:<input type="text" name="title"/><br>
-              Description:<input type="text" name="description"/><br>
-              Release Year:<input type="text" name="release_year"/><br>
-              <input type="submit" value="Edit Film"/><br>
+          <form action="/editStudentServlet.do" method="post">
+              <table>
+                  <tr>
+                      <td> Student ID:<input type="text" name="id"/></td>
+                  </tr>
+                  <tr>
+                      <td> First Name:<input name="firstName" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td> Last Name:<input name="lastName" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td> Average:<input name="average" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td> University:<input name="university" type="text"/></td>
+                  </tr>
+                  <tr>
+                      <td align="right"><input type="submit" value="Edit Student"/></td>
+                  </tr>
+              </table>
           </form>
       </div>
       <br><br>
 
       <div id="delete">
-          <form action="/deleteFilm_Servlet.do" method="get">
-          ID:<input type="text" name="film_id"/><br>
-              <input type="submit" value="Delete Film"/><br>
+          <form action="/deleteStudent_Servlet.do" method="get">
+              <table>
+                  <tr>
+                      <td> Student ID:<input type="text" name="student_id"/></td>
+                  </tr>
+                  <tr>
+                      <td align="right"><input type="submit" value="Delete Student"/></td>
+                  </tr>
+              </table>
           </form>
       </div>
+      <br><br>
       <br>
 </body>
 </html>
