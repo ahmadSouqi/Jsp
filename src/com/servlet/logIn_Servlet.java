@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * Created by asouqi on 3/14/18.
  */
-@WebServlet(name = "logIn_Servlet", urlPatterns = "/log.do")
+@WebServlet(name = "logIn_Servlet", urlPatterns ={"/log.do"})
 public class logIn_Servlet extends HttpServlet {
 
     private UserDAO dao;
@@ -36,7 +36,7 @@ public class logIn_Servlet extends HttpServlet {
          if (isValid(user)){
              HttpSession session=request.getSession();
              session.setAttribute("user",user);
-             request.getRequestDispatcher("CrudForm.html").forward(request,response);
+             request.getRequestDispatcher("CrudForm.jsp").forward(request,response);
          }
          else
              request.getRequestDispatcher("index.jsp").forward(request,response);

@@ -21,6 +21,7 @@ public class StudentDAO {
     public List<Student> getStudents(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
+
             Connection connection= DriverManager.getConnection(url,userName,passWord);
             Statement statement=connection.createStatement();
             ResultSet set=statement.executeQuery("select * from Servlet.student;");
@@ -48,10 +49,10 @@ public class StudentDAO {
             PreparedStatement ps=connection.prepareStatement("INSERT INTO Servlet.student VALUE(?,?,?,?,?)");
 
             ps.setInt(1, student.getId());
-            ps.setString(2, student.getFirst_name());
-            ps.setString(3, student.getLast_name());
-            ps.setDouble(4, student.getAvrg());
-            ps.setString(5, student.getUnvirsty());
+            ps.setString(2, student.getFirstName());
+            ps.setString(3, student.getLastName());
+            ps.setDouble(4, student.getAverage());
+            ps.setString(5, student.getUniversity());
             ps.execute();
 
         } catch (SQLException e) {
@@ -68,12 +69,12 @@ public class StudentDAO {
             PreparedStatement ps=connection.prepareStatement("update Servlet.student set  " +
                                       "student_id=?, first_name=?, last_name=?, avrg=?, Unv=?" +
                                        "where student_id=?;");
-            System.out.println(student);
+
             ps.setInt(1, student.getId());
-            ps.setString(2, student.getFirst_name());
-            ps.setString(3, student.getLast_name());
-            ps.setDouble(4, student.getAvrg());
-            ps.setString(5, student.getUnvirsty());
+            ps.setString(2, student.getFirstName());
+            ps.setString(3, student.getLastName());
+            ps.setDouble(4, student.getAverage());
+            ps.setString(5, student.getUniversity());
             ps.setInt(6, student.getId());
             System.out.println(ps.execute());
 
