@@ -63,20 +63,20 @@ public class Student implements Serializable {
         this.university = university;
     }
 
-    private enum evolution{EXCLENT,VARYGOOD,GOOD,ACCEPTED}
+    private enum evaluation{EXCELLENT,VERY_GOOD,GOOD,ACCEPTED}
 
-    public evolution getEvolution(){
+    public evaluation getEvaluation(){
         if (average>=84){
-            return evolution.EXCLENT;
+            return evaluation.EXCELLENT;
         }
         else
             if (average>=74){
-              return evolution.VARYGOOD;
+              return evaluation.VERY_GOOD;
             }
             else
                 if (average>=65)
-                    return evolution.GOOD;
-            else return evolution.ACCEPTED;
+                    return evaluation.GOOD;
+            else return evaluation.ACCEPTED;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.model;
 
+import javax.servlet.ServletException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class StudentDAO {
         return null;
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection= DriverManager.getConnection(url,userName,passWord);
@@ -57,6 +58,7 @@ public class StudentDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new ServletException(e);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

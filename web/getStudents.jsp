@@ -20,7 +20,7 @@
      <th>Last Name</th>
      <th>Average</th>
      <th>University</th>
-     <th>Evolution</th>
+     <th>Evaluation</th>
  </tr>
 
   <%
@@ -36,7 +36,7 @@
                 <td><%=student.getLastName()%></td>
                 <td><%=student.getAverage()%></td>
                 <td><%=student.getUniversity()%></td>
-                <td><%=student.getEvolution()%></td>
+                <td><%=student.getEvaluation()%></td>
             </tr>
      <% } %>
 </table>

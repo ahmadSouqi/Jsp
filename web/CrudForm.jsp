@@ -11,6 +11,9 @@
     <title>CRUD Operation</title>
 </head>
 <body>
+      <form action="/logout.do" method="get" align="right">
+      <input type="submit" value="Sing-Out" />
+      </form>
 
       <a href="/getStudents.jsp">Get All Students</a>
 

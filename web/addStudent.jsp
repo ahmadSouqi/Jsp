@@ -6,8 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="Error.jsp" %>
 <html>
 <body>
+
     <jsp:useBean id="student" class="com.model.Student">
         <jsp:setProperty name="student" property="*" />
     </jsp:useBean>
